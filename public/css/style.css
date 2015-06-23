@@ -1,0 +1,57 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.zf-green {
+    color: #68b604;
+}
+
+.btn-success {
+  background-color: #57a900;
+  background-image: -moz-linear-gradient(top, #70d900, #57a900);
+  background-image: -ms-linear-gradient(top, #70d900, #57a900);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#70d900), to(#57a900));
+  background-image: -webkit-linear-gradient(top, #70d900, #57a900);
+  background-image: -o-linear-gradient(top, #70d900, #57a900);
+  background-image: linear-gradient(top, #70d900, #57a900);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#70d900', endColorstr='#57a900', GradientType=0);
+}
+
+.btn-success:hover,
+.btn-success:active,
+.btn-success.active,
+.btn-success.disabled,
+.btn-success[disabled] {
+  background-color: #57a900;
+}
+
+.btn-success:active, .btn-success.active {
+  background-color: #57a900;
+}
+
+div.container a.brand {
+    background: url("../img/zf2-logo.png") no-repeat scroll 0 10px transparent;
+    margin-left: 0;
+    padding: 8px 20px 12px 40px;
+}
+
+.table th, .table td { 
+     border-top: none !important; 
+ }
+ 
+ .btn-sm {
+    //padding: 18px 28px;
+    //font-family: "Arial Black","Arial Bold",Gadget,sans-serif !important;
+    font-family: Verdana,Geneva,sans-serif !important;
+    font-weight:900 !important;
+    
+    //padding-bottom: 10px!important;
+    padding-top: 3px!important;
+    border-top-left-radius: 15px!important;
+    border-top-right-radius: 15px!important;
+    }
+
+ .padd {
+    padding-bottom: 10px!important; 
+ }
