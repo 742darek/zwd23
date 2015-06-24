@@ -50,8 +50,8 @@ $( document ).ready(function() {
      </div>
  </div>
 
- <div class="row" >
-     <div class="col-lg-12">
+ <div class="row" id="table-00">
+     
          <div class="btn-group btn-group-justified" role="group" aria-label="...">
              <div class="btn-group" role="group" aria-label="label">
                  <button type="button" class="btn btn-default btn-sm" onclick="fanz()">Wszystkie</button>
@@ -72,7 +72,35 @@ $( document ).ready(function() {
                  <button type="button" class="btn btn-default btn-sm">Super okazje</button>
              </div>
          </div>
-     </div>
+ </div>
+ <div class="row" id="table-00">
+         <table class="tabela">
+     
+ <tr class="naglowek">
+     <th class="kolumna column-01">Name</th>
+     <th class="kolumna column-02">Publish date</th>
+     <th class="kolumna column-03">Price</th>
+     <th class="kolumna column-04">Autor</th>
+     <th class="kolumna column-05">Publisher</th>
+     <th class="kolumna column-06">&nbsp;</th>
+ </tr>
+         
+ <?php foreach ($albums as $album) : ?>
+ <tr>
+     <td class="kolumna"><?php echo $this->escapeHtml($album->autor);?></td>
+     <td class="kolumna"><?php echo $this->escapeHtml($album->nazwa);?></td>
+     <td class="kolumna"><?php echo $this->escapeHtml($album->nazwa);?></td>
+     <td class="kolumna"><?php echo $this->escapeHtml($album->nazwa);?></td>
+     <td class="kolumna"><?php echo $this->escapeHtml($album->nazwa);?></td>
+     <td class="kolumna">
+         <a href="<?php echo $this->url('album',
+             array('action'=>'edit', 'id' => $album->id));?>">Edit</a>
+         
+     </td>
+ </tr>
+ <?php endforeach; ?>
+ </table>
+     
  </div>
 
 <!-- <div class="btn-group" role="group" aria-label="...">
@@ -84,22 +112,5 @@ $( document ).ready(function() {
      <a href=" <?php //echo $this->url('album', array('action'=>'add'));?>">Add new album</a>
  </p>-->
 
- <table class="table">
- <tr>
-     <th>Title</th>
-     <th>Artist</th>
-     <th>&nbsp;</th>
- </tr>
- <?php foreach ($albums as $album) : ?>
- <tr>
-     <td><?php echo $this->escapeHtml($album->autor);?></td>
-     <td><?php echo $this->escapeHtml($album->nazwa);?></td>
-     <td>
-         <a href="<?php echo $this->url('album',
-             array('action'=>'edit', 'id' => $album->id));?>">Edit</a>
-         <a href="<?php echo $this->url('album',
-             array('action'=>'delete', 'id' => $album->id));?>">Delete</a>
-     </td>
- </tr>
- <?php endforeach; ?>
- </table>
+ 
+    

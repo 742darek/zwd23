@@ -45,13 +45,82 @@ div.container a.brand {
     //font-family: "Arial Black","Arial Bold",Gadget,sans-serif !important;
     font-family: Verdana,Geneva,sans-serif !important;
     font-weight:900 !important;
-    
+    //height: 10px!important;
     //padding-bottom: 10px!important;
-    padding-top: 3px!important;
+    padding-top: 2px!important;
+    max-height: 35px;
     border-top-left-radius: 15px!important;
     border-top-right-radius: 15px!important;
+    border-style: solid!important;
+    border-color: #000!important;
+    border-bottom: none!important;
     }
 
  .padd {
     padding-bottom: 10px!important; 
  }
+ 
+ .kolumna {
+     border-right: 1px solid #000!important;
+ }
+ 
+ .column-01 {
+     width: 39%;
+ }
+ 
+ .column-02 {
+     width: 12%;
+ }
+ 
+ .column-03 {
+     width: 8%;
+ }
+ 
+  .column-04 {
+     width: 15%;
+ }
+ 
+ .column-05 {
+     width: 15%;
+ }
+ 
+ .column-06 {
+     width: 11%;
+ }
+ 
+ tbody tr:nth-child(odd) {
+   background-color: #f8f8f8;
+}
+
+.tabela {
+    border-left : 1px solid #000;
+    border-bottom: 1px solid #000;
+    border-top: 1px solid #000;
+    width: 100%;
+}
+
+.tabela2 {
+    width: 100%;
+}
+
+.naglowek {
+    border-bottom: 1px solid #000;
+    background-color: #eeeeee!important;
+    width: 100%;
+}
+
+div.container {
+    border: 2px solid black!important;
+    height: 700px!important;
+    
+}
+
+div.container .row {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#table-00 {
+    margin-left: 17px;
+    margin-right: 17px;
+}
