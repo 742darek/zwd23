@@ -22,12 +22,36 @@ and open the template in the editor.
 //});
 
 $( document ).ready(function() {
+    //var button-id;
     $(".btn").first().toggleClass("active");
     $(".btn").click(function(){
         $('.btn').removeClass('active');
         $(this).toggleClass('active');
+//        button-id = $(this);
+//        if(button-id == 'button-01')
     });
 });
+
+//$.ajax({
+//            type:"POST",
+//            // URL : / name of the controller for the site / name of the action to be                         
+//            //                                                 executed
+//            url:"/example/answer",
+//            data:myData,
+//            success: function(data){
+//                                   //The callback function, that is going to be executed 
+//                                   //after the server response. data is the data returned
+//                                   //from the server.
+//
+//                                   // Show the returned text
+//                                   $("#answer").text(data.text);
+//
+//
+//                                    },
+//            failure(function(){alert("Failure!!");})
+//
+//
+//           });
  </script>
  
  <div class="row" style="border-bottom: 2px solid black;">
@@ -54,22 +78,22 @@ $( document ).ready(function() {
      
          <div class="btn-group btn-group-justified" role="group" aria-label="...">
              <div class="btn-group" role="group" aria-label="label">
-                 <button type="button" class="btn btn-default btn-sm" onclick="fanz()">Wszystkie</button>
+                 <button type="button" class="btn btn-default btn-sm" id="button-00">Wszystkie</button>
              </div>
              <div class="btn-group" role="group" aria-label="label">
-                 <button type="button" class="btn btn-default btn-sm" id="audio" >Audiobooki</button>
+                 <button type="button" class="btn btn-default btn-sm" id="button-01">Audiobooki</button>
              </div>
              <div class="btn-group" role="group" aria-label="label">
-                 <button type="button" class="btn btn-default btn-sm">E-booki</button>
+                 <button type="button" class="btn btn-default btn-sm" id="button-02">E-booki</button>
              </div>
              <div class="btn-group" role="group" aria-label="label">
-                 <button type="button" class="btn btn-default btn-sm">Nowosci</button>
+                 <button type="button" class="btn btn-default btn-sm" id="button-03">Nowosci</button>
              </div>
              <div class="btn-group" role="group" aria-label="label">
-                 <button type="button" class="btn btn-default btn-sm">Zapowiedzi</button>
+                 <button type="button" class="btn btn-default btn-sm" id="button-04">Zapowiedzi</button>
              </div>
              <div class="btn-group" role="group" aria-label="label">
-                 <button type="button" class="btn btn-default btn-sm">Super okazje</button>
+                 <button type="button" class="btn btn-default btn-sm" id="button-05">Super okazje</button>
              </div>
          </div>
  </div>
@@ -84,8 +108,8 @@ $( document ).ready(function() {
      <th class="kolumna column-05">Publisher</th>
      <th class="kolumna column-06">&nbsp;</th>
  </tr>
-         
- <?php foreach ($albums as $album) : ?>
+ <div id="input">
+ <?php foreach ($future as $album) : ?>
  <tr>
      <td class="kolumna"><?php echo $this->escapeHtml($album->nazwa);?></td>
      <td class="kolumna"><?php echo $this->escapeHtml($album->data);?></td>
@@ -99,6 +123,7 @@ $( document ).ready(function() {
      </td>
  </tr>
  <?php endforeach; ?>
+ </div>
  </table>
      
  </div>

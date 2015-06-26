@@ -27,38 +27,64 @@
 
      public function fetchAll()
      {
-//         $where = new Where();
-//         $kolumna = `Rodzaj ksi±¿ki`;
-//         $where->like($kolumna,1);
-//         $resultSet = $this->tableGateway->select($where);
-//         return $resultSet;
-         $platform = $this->tableGateway->getAdapter()->getPlatform();
          $select = new Select();
-        $select -> from("books");    
-        $filterList = array("Rodzaj ksi±¿ki");
-
-        $predicateIn = $platform->quoteIdentifierChain(array('books','1'));
-        $predicateIn .= " in (";
-        $predicateIn .= $platform->quoteValueList($filterList);
-        $predicateIn .= ")";
-
-        $select -> where(array($predicateIn));
-        $resultSet = $this ->tableGateway-> selectWith($select);
-        return $resultSet;
-        
+         $select->from('books');
+         $select->order(array('nazwa'));
+         $resultSet = $this->tableGateway->selectWith($select);
+         return $resultSet;
      }
      
-     public function nowa()
+     public function fetchBooks()
      {
-         
+         $sql = "SELECT * FROM books WHERE `Rodzaj ksi±¿ki` = 2"
+                 . " ORDER BY nazwa";
+         $resultSet = $this->tableGateway->getAdapter()->query($sql, Adapter::QUERY_MODE_EXECUTE);
+         //$resultSet = $result->toArray();
+         return $resultSet;
      }
 
 
      public function fetchAudio ()
      {  
-         $sql = "SELECT * FROM books WHERE `Rodzaj ksi±¿ki` = 1";
+         $sql = "SELECT * FROM books WHERE `Rodzaj ksi±¿ki` = 1"
+                 . " ORDER BY nazwa";
          $resultSet = $this->tableGateway->getAdapter()->query($sql, Adapter::QUERY_MODE_EXECUTE);
          //$resultSet = $result->toArray();
+         return $resultSet;
+     }
+     
+     public function fetchNew ()
+     {  
+         $sql = "SELECT * FROM books WHERE DATE(data) <= NOW()"
+                 . " AND DATE(data) > (NOW() - INTERVAL 14 DAY)"
+                 . " ORDER BY nazwa";
+         $resultSet = $this->tableGateway->getAdapter()->query($sql, Adapter::QUERY_MODE_EXECUTE);
+         //$resultSet = $result->toArray();
+         return $resultSet;
+     }
+     
+     public function fetchFuture ()
+     {  
+         $sql = "SELECT * FROM books WHERE DATE(data) > NOW()"
+                 . " AND DATE(data) < (NOW() + INTERVAL 14 DAY)"
+                 . " ORDER BY nazwa";
+         $resultSet = $this->tableGateway->getAdapter()->query($sql, Adapter::QUERY_MODE_EXECUTE);
+         //$resultSet = $result->toArray();
+         return $resultSet;
+     }
+     
+     public function fetchBest()
+     {
+         $select = new Select();
+         $select->from('books')->where('okazja = 1')->order(array('nazwa'));
+         $resultSet = $this->tableGateway->selectWith($select);
+         return $resultSet;
+     }
+     
+     public function sortzRows()
+     {
+         
+         $resultSet= $this->order(array('nazwa'));
          return $resultSet;
      }
 

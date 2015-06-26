@@ -40,6 +40,11 @@
      {
          return new ViewModel(array(
              'albums' => $this->getAlbumTable()->fetchAudio(),
+             'all' => $this->getAlbumTable()->fetchAll(),
+             'books' => $this->getAlbumTable()->fetchBooks(),
+             'best' => $this->getAlbumTable()->fetchBest(),
+             'new' => $this->getAlbumTable()->fetchNew(),
+             'future' => $this->getAlbumTable()->fetchFuture(),
          ));
      }
 
