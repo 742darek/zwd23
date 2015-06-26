@@ -87,11 +87,11 @@ $( document ).ready(function() {
          
  <?php foreach ($albums as $album) : ?>
  <tr>
+     <td class="kolumna"><?php echo $this->escapeHtml($album->nazwa);?></td>
+     <td class="kolumna"><?php echo $this->escapeHtml($album->data);?></td>
+     <td class="kolumna"><?php echo $this->escapeHtml($album->cena);?></td>
      <td class="kolumna"><?php echo $this->escapeHtml($album->autor);?></td>
-     <td class="kolumna"><?php echo $this->escapeHtml($album->nazwa);?></td>
-     <td class="kolumna"><?php echo $this->escapeHtml($album->nazwa);?></td>
-     <td class="kolumna"><?php echo $this->escapeHtml($album->nazwa);?></td>
-     <td class="kolumna"><?php echo $this->escapeHtml($album->nazwa);?></td>
+     <td class="kolumna"><?php echo $this->escapeHtml($album->wydawnictwo);?></td>
      <td class="kolumna">
          <a href="<?php echo $this->url('album',
              array('action'=>'edit', 'id' => $album->id));?>">Edit</a>

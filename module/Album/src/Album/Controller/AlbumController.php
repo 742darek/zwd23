@@ -26,10 +26,20 @@
          return $this->albumTable;
      }
      
+     public function getDbAdapter()
+     {
+         if(!$this->albumTable){
+             $sm = $this->getServiceLocator();
+             $this->albumTable = $sm->get('Zend\Db\Adapter\Adapter');
+         }
+         return $this->albumTable;
+     }
+
+
      public function indexAction()
      {
          return new ViewModel(array(
-             'albums' => $this->getAlbumTable()->fetchAll(),
+             'albums' => $this->getAlbumTable()->fetchAudio(),
          ));
      }
 
