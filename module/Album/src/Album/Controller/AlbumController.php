@@ -10,6 +10,8 @@
 
  use Zend\Mvc\Controller\AbstractActionController;
  use Zend\View\Model\ViewModel;
+ use Zend\View\Model\JsonModel;
+ use Zend\Json\Json;
  use Album\Model\Album;          // <-- Add this import
  use Album\Form\AlbumForm;       // <-- Add this import
 
@@ -34,19 +36,86 @@
          }
          return $this->albumTable;
      }
+     
+//     public function init()
+//     {
+//         $this->_helper->ContextSwitch()
+//                 ->addActionContext('getJsonResponse',array('json'))
+//                 ->initContext();
+//     }
 
-
+     
+     
      public function indexAction()
      {
-         return new ViewModel(array(
-             'albums' => $this->getAlbumTable()->fetchAudio(),
-             'all' => $this->getAlbumTable()->fetchAll(),
-             'books' => $this->getAlbumTable()->fetchBooks(),
-             'best' => $this->getAlbumTable()->fetchBest(),
-             'new' => $this->getAlbumTable()->fetchNew(),
-             'future' => $this->getAlbumTable()->fetchFuture(),
-         ));
+         
+//         return new ViewModel(array(
+//             'albums' => $this->getAlbumTable()->fetchAudio(),
+//             //'all' => $this->getAlbumTable()->fetchAll(),
+//             'books' => $this->getAlbumTable()->fetchBooks(),
+//             'best' => $this->getAlbumTable()->fetchBest(),
+//             'new' => $this->getAlbumTable()->fetchNew(),
+//             'future' => $this->getAlbumTable()->fetchFuture(),
+//         ));
+         
+         
+         
      }
+         
+         
+     
+     public function listAction()
+     {
+         $id = (int) $this->params()->fromRoute('id', 0);
+         switch ($id){
+            case 1 :
+                $resultSet = $this->getAlbumTable()->fetchAll();
+                break;
+            case 2 :
+                $resultSet = $this->getAlbumTable()->fetchAudio();
+                break;
+            case 3 :
+                $resultSet = $this->getAlbumTable()->fetchBooks();
+                break;
+            case 4 :
+                $resultSet = $this->getAlbumTable()->fetchNew();
+                break;
+            case 5 :
+                $resultSet = $this->getAlbumTable()->fetchFuture();
+                break;
+            case 6 :
+                $resultSet = $this->getAlbumTable()->fetchBest();
+                break;
+         }
+         
+         
+         
+
+         $nazwa = array();
+         $data = array();
+         $cena = array();
+         $autor = array();
+         $wydawnictwo = array();
+         foreach( $resultSet as $r )
+         {
+            $nazwa[] = $r->nazwa;
+            $data[] = $r->data;
+            $cena[] = $r->cena;
+            $autor[] = $r->autor;
+            $wydawnictwo[] = $r->wydawnictwo;
+         }
+         
+                 
+         return new JsonModel(array(
+             'nazwa' => $nazwa,
+             'data' => $data,
+             'cena' => $cena,
+             'autor' => $autor,
+             'wydawnictwo' => $wydawnictwo,
+         ));
+         
+     }
+     
 
      public function addAction()
      {
